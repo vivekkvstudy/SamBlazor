@@ -4,6 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using SamBlazor.Components;
 using SamBlazor.Components.Account;
 using SamBlazor.Data;
+using SamBlazor.Repository;
+using SamBlazor.Repository.IRepoistory;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +14,7 @@ builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
 
 builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddScoped<ICategoryRepository,CategoryRepoistory>();
 builder.Services.AddScoped<IdentityUserAccessor>();
 builder.Services.AddScoped<IdentityRedirectManager>();
 builder.Services.AddScoped<AuthenticationStateProvider, IdentityRevalidatingAuthenticationStateProvider>();
