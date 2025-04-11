@@ -2,8 +2,8 @@
 @inject ICategoryRepository _categoryrepository;
 @if (IsProcessing)
 {
-	<div class="position-absolute w-10 h-10 d-flex flex-column align-items-center bg-white justify-content-center">
-		<img src="/images/loading.gif" />
+	<div class="position-absolute w-60 h-60 d-flex flex-column align-items-center bg-white justify-content-center">
+		<img src="/images/load.gif" />
 	</div>
 }
 else
@@ -19,7 +19,7 @@ else
 		<div class="card-body p-4">
 			<div class="row pb-3">
 				<div class="col-12 text-end">
-					<button class="btn btn-lg btn-secondary" style="width:250px">Add New Category</button>
+					<a class="btn btn-lg btn-secondary" style="width:250px" href="/category/create"><i class="bi bi-file-earmark-plus"></i>Add New Category</a>
 				</div>
 			</div>
 			@if (Category.Any())
@@ -36,7 +36,9 @@ else
 						{
 							<tr>
 								<td>@item.Name</td>
-								<td></td>
+								<td><a href="@($"category/update/{item.Id}")" class="btn btn-primary"><i class="bi bi-pencil"></i>Edit </a>
+								<button class="btn btn-danger"><i class="n bi-trash3"></i>Delete</button>
+								</td>
 							</tr>
 
 						}
