@@ -2,6 +2,7 @@
 @page "/category/update/{Id:int}"
 @inject ICategoryRepository _categoryrepository;
 @inject NavigationManager navigate;
+@inject IJSRuntime _JS;
 @if (IsProcessing)
 {
 	<div class="position-absolute w-10 h-10 d-flex flex-column align-items-center bg-white justify-content-center">
@@ -37,7 +38,7 @@ else
 					 <div class="col-6 col-md-3">
 						 <button type="submit" class="btn  btn-primary form-control" style="width:250px">
 						<i class="bi bi-arrow-bar-left"></i>
-							Update
+							@(Id > 0 ? "Update" : "Create")
 							</button>
 					 </div>
 				 <div class="col-6 col-md-3">
@@ -87,10 +88,12 @@ else
 		if (Category.Id > 0)
 		{
 			await _categoryrepository.UpdateAsync(Category);
+			await _JS.ToasterSuccess("Category Updated Successfully");
 		}
 		else
 		{
 			await _categoryrepository.CreateAsync(Category);
+			//await js.ToasterError("Category Updated Failed");
 		}
 		IsProcessing = false;
 		navigate.NavigateTo("/category");

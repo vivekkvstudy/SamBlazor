@@ -15,10 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Services\Extensions\" />
     <Folder Include="ViewModels\" />
-    <Folder Include="wwwroot\js\" />
     <Folder Include="wwwroot\images\" />
+    <Folder Include="wwwroot\product\" />
   </ItemGroup>
 
 </Project>
